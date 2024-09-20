@@ -20,14 +20,14 @@ TODO: deleted items removed from DB
 TODO: DOM updates on deleted todo
 TODO: CSS stylings
 
-DB schema: table todos (text, submitted, is_complete)
+DB schema: table todos (task, submitted, is_complete)
 id SERIAL NOT NULL
-text: varchar
+task: varchar
 submitted: Date
 is_compete: Boolean
 
 Node schema: todo object{
-    text: String
+    task: String
     dateSubmitted: Date
     isComplete: boolean
 

@@ -5,13 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="./scripts/axios.js"></script>
-  <script src="./scripts/client.js"></script>
+  <script defer src="scripts/client.js" charset="utf-8"></script>
   <title>SQL TO-DO List</title>
 </head>
 <body>
   <header>
     <h1>SQL TO-DO List</h1>
   </header>
-
+  <section id="addTodo">
+    <h2>Add Todo:</h2>
+    <input type="text" id="taskIn" value="" placeholder="task">
+    <button type="button" id="submitButton">Submit</button>
+  </section>
+  <section id="taskList">
+    <h3>Task list:</h3>
+    <table>
+      <tbody id="taskRows">
+        <tr><td>a</td></tr>
+      </tbody>
+    </table>
+  </section>
 </body>
 </html>
