@@ -52,9 +52,10 @@ function renderTasks(taskArray){
         <th>completed</th>
     </thead>`;
     for (let task of taskArray){
+        let row = buildRow(task)
         let comepleteString = checkComplete(task) //empty if task is complete, otherwise button that onclicks completeTask
         taskTable.innerHTML += `
-        <tr>
+        ${row}
             <td>${task.text}</td>
             <td>${task.isComplete}</td>
             <td>${comepleteString}</td>
@@ -63,6 +64,17 @@ function renderTasks(taskArray){
     }
 }
 
+function buildRow(task){ //adds a TR with either completed class or no class
+    console.log('building row')
+    if(task.isComplete){
+        return`<tr class=completed>`
+    }
+    else {
+        return`<tr>`
+    }
+}
+
+//if the task isn't complete, make a button to complete it
 function checkComplete(task){
     if(!task.isComplete) return `<button onclick=finishTask(${task.id})>Complete</button>`
     else return ''
