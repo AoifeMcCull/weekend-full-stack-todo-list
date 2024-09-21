@@ -58,7 +58,7 @@ function renderTasks(taskArray){
             <td>${task.text}</td>
             <td>${task.isComplete}</td>
             <td>${comepleteString}</td>
-            <td><button onClick = deleteTask(event)>Delete</button></td>
+            <td><button onClick = deleteTask(${task.id})>Delete</button></td>
         </tr>`
     }
 }
@@ -68,12 +68,16 @@ function checkComplete(task){
     else return ''
 }
 
-function deleteTask(event){
-    console.log(event.target)
-    let parentRow = event.target.parentElement.parentElement
-    let ttable = document.getElementById("taskTable")
-    ttable.deleteRow(parentRow.rowIndex)
-    //TODO: REPLACE WITH AXIOS DELETE AND THEN JUST RELOAD THE PAGE
+function deleteTask(taskId) {
+	axios
+		.delete(`/todos/${taskId}`)
+		.then((response) => {
+			getTasks();
+		})
+		.catch((error) => {
+			console.log("error:", error);
+			alert("error deleting task");
+		});
 }
 
 

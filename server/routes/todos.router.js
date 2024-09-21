@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
 })
 
 
-//TODO:add a new todo to db
 router.post("/", (req, res) => {
     let newTodo = req.body;
     console.log('adding todo', newTodo)
@@ -36,6 +35,21 @@ router.post("/", (req, res) => {
 //TODO: update a task to show that it is done
 
 //TODO: remove a task
+router.delete("/:id", (req, res) => {
+    console.log("deleting", req.params);
+    let id=req.params.id
+    let queryText = `delete from "todos" where "id" = $1`
+    let params = [id]
 
+    pool
+        .query(queryText, params)
+        .then((result) => {
+            res.sendStatus(204);
+        })
+        .catch((error) => {
+            console.log(error)
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;
