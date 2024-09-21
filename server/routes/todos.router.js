@@ -32,7 +32,22 @@ router.post("/", (req, res) => {
         })
 })
 
-//TODO: update a task to show that it is done
+router.put("/finish/:id", (req, res) => {
+	console.log("finishing", req.params);
+	let queryText = `update "todos" set "isComplete" = true where "id" = $1`;
+	let id = req.params.id;
+	let params = [id];
+
+	pool
+		.query(queryText, params)
+		.then((result) => {
+			res.sendStatus(204);
+		})
+		.catch((error) => {
+			console.log("error:", error);
+			res.sendStatus(500);
+		});
+});
 
 //TODO: remove a task
 router.delete("/:id", (req, res) => {

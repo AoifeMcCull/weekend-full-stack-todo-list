@@ -8,16 +8,9 @@ Your project description goes here. What problem did you solve? How did you solv
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
 /*
-TODO: Front end allows a user to create a to-do item
-TODO: Store todo item in db
-TODO: update DOM to display new item
-TODO: complete and delete buttons
-TODO: complete button makes todo isComplete = true in DB
+
 TODO: complete button applies completed CSS class
 TODO: completed CSS class clearly shows to-do as complete
-TODO: disable completed button or add a checkbox for completed items
-TODO: deleted items removed from DB
-TODO: DOM updates on deleted todo
 TODO: CSS stylings
 
 DB schema: table todos (task, submitted, is_complete)
@@ -28,9 +21,7 @@ is_compete: Boolean
 
 Node schema: todo object{
     task: String
-    dateSubmitted: Date
     isComplete: boolean
-
 }
 
 

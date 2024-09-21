@@ -64,7 +64,7 @@ function renderTasks(taskArray){
 }
 
 function checkComplete(task){
-    if(!task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
+    if(!task.isComplete) return `<button onclick=finishTask(${task.id})>Complete</button>`
     else return ''
 }
 
@@ -77,6 +77,18 @@ function deleteTask(taskId) {
 		.catch((error) => {
 			console.log("error:", error);
 			alert("error deleting task");
+		});
+}
+
+function finishTask(taskId) {
+	axios
+		.put(`/todos/finish/${taskId}`)
+		.then((response) => {
+			getTasks();
+		})
+		.catch((error) => {
+			console.log("error:", error);
+			alert("error finishing task");
 		});
 }
 
