@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src="./scripts/axios.js"></script>
-  <script defer src="scripts/client.js" charset="utf-8"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="scripts/client.js"></script>
   <title>SQL TO-DO List</title>
 </head>
 <body>
@@ -15,16 +15,12 @@
   <section id="addTodo">
     <h2>Add Todo:</h2>
     <input type="text" id="taskIn" value="" placeholder="task">
-    <button type="button" id="submitButton">Submit</button>
+    <button type="button" id="submitButton" onClick = "submitTodo(event)">Submit</button>
   </section>
   <section id="taskList">
     <h3>Task list:</h3>
     <table id="taskTable">
-      <tr>
-        <th>task</th><th>date</th><th>completed</th>
-      </tr>
       <tbody id="taskRows">
-        <tr><td>a</td></tr>
       </tbody>
     </table>
   </section>

@@ -1,41 +1,61 @@
 console.log('JS is sourced!');
 
-//TODO: DELETE TEMP DATA FOR FRONTEND TESTING
-let response = [{
-    task: "remove this test data",
-    date: new Date(),
-    isComplete: false,
-},
-{
-    task: "foo",
-    date: new Date(),
-    isComplete: false
-},
-{
-    task:"feed the cat",
-    date: new Date('September 20, 24 16:20:01'),
-    isComplete: true
-}
-]
-//TODO: DELETE TEMP DATA ABOVE
+
 
 function getTasks(){
     //axios goes here
-
-    renderTasks(response);
+    axios({
+        method: "GET",
+        url: "/todos"
+    })
+        .then(function (response) {
+            console.log("get /todos response", response.data);
+            renderTasks(response.data)
+        })
+        .catch(function(error){
+            console.error('error in GET /todos', error)
+        })
 }
 
+function submitTodo(event){
+    event.preventDefault();
+    console.log('submit button clicked');
+    let todo = {};
+    todo.text = document.getElementById("taskIn").value;
+    addTodo(todo);
+}
+
+
+function addTodo(todoToAdd) {
+	axios({
+		method: "POST",
+		url: "/todos",
+		data: todoToAdd,
+	})
+		.then(function (response) {
+			console.log("addTodo()", response.data);
+			getTasks();
+		})
+		.catch(function (error) {
+			console.log("Error in POST", error);
+			alert("Unable to add todo at this time. Please try again later.");
+		});
+}
+
+
 function renderTasks(taskArray){
+    console.log(taskArray)
     let taskTable = document.getElementById("taskRows");
-    console.log(taskTable)
-    taskTable.innerHTML = '';
+    taskTable.innerHTML = `
+    <thead>
+        <th>task</th>
+        <th>completed</th>
+    </thead>`;
     for (let task of taskArray){
         let comepleteString = checkComplete(task) //empty if task is complete, otherwise button that onclicks completeTask
-        let tasksDate = task.date
         taskTable.innerHTML += `
         <tr>
-            <td>${task.task}</td>
-            <td>${tasksDate.toISOString()}</td>
+            <td>${task.text}</td>
             <td>${task.isComplete}</td>
             <td>${comepleteString}</td>
             <td><button onClick = deleteTask(event)>Delete</button></td>
@@ -44,7 +64,7 @@ function renderTasks(taskArray){
 }
 
 function checkComplete(task){
-    if(task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
+    if(!task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
     else return ''
 }
 
