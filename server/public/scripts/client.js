@@ -31,7 +31,7 @@ function renderTasks(taskArray){
     taskTable.innerHTML = '';
     for (let task of taskArray){
         console.log('rendering task:', task)
-        let comepleteString = checkComplete(task)
+        let comepleteString = checkComplete(task) //empty if task is complete, otherwise button that onclicks completeTask
         let tasksDate = task.date
         taskTable.innerHTML += `
         <tr>
@@ -45,7 +45,7 @@ function renderTasks(taskArray){
 
 function checkComplete(task){
     if(task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
-    else return 
+    else return ''
 }
 
 getTasks()
