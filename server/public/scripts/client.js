@@ -30,7 +30,6 @@ function renderTasks(taskArray){
     console.log(taskTable)
     taskTable.innerHTML = '';
     for (let task of taskArray){
-        console.log('rendering task:', task)
         let comepleteString = checkComplete(task) //empty if task is complete, otherwise button that onclicks completeTask
         let tasksDate = task.date
         taskTable.innerHTML += `
@@ -39,6 +38,7 @@ function renderTasks(taskArray){
             <td>${tasksDate.toISOString()}</td>
             <td>${task.isComplete}</td>
             <td>${comepleteString}</td>
+            <td><button onClick = deleteTask(event)>Delete</button></td>
         </tr>`
     }
 }
@@ -47,5 +47,14 @@ function checkComplete(task){
     if(task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
     else return ''
 }
+
+function deleteTask(event){
+    console.log(event.target)
+    let parentRow = event.target.parentElement.parentElement
+    let ttable = document.getElementById("taskTable")
+    ttable.deleteRow(parentRow.rowIndex)
+    //TODO: REPLACE WITH AXIOS DELETE AND THEN JUST RELOAD THE PAGE
+}
+
 
 getTasks()
