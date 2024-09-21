@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
-//TODO: get all tasks
 
 router.get("/", (req, res) => {
     let queryText = ' SELECT * from "todos" ORDER BY ("isComplete" is false) DESC;';
@@ -49,7 +48,6 @@ router.put("/finish/:id", (req, res) => {
 		});
 });
 
-//TODO: remove a task
 router.delete("/:id", (req, res) => {
     console.log("deleting", req.params);
     let id=req.params.id

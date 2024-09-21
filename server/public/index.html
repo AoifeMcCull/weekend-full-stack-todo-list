@@ -10,19 +10,23 @@
 </head>
 <body>
   <header>
-    <h1>SQL TO-DO List</h1>
+    <h1 class="siteTitle">SQL TO-DO List</h1>
   </header>
-  <section id="addTodo">
-    <h2>Add Todo:</h2>
-    <input type="text" id="taskIn" value="" placeholder="task">
-    <button type="button" id="submitButton" onClick = "submitTodo(event)">Submit</button>
-  </section>
-  <section id="taskList">
-    <h3>Task list:</h3>
-    <table id="taskTable">
-      <tbody id="taskRows">
-      </tbody>
-    </table>
-  </section>
+  <main>
+    <section id="addTodo">
+      <h2>Add Todo:</h2>
+      <form>
+        <input type="text" id="taskIn" value="" placeholder="task">
+        <button type="button" id="submitButton" onClick = "submitTodo(event)">Submit</button>
+      </form>
+    </section>
+    <section id="taskList" class = "taskList">
+      <h3 class="taskListTitle">Task list:</h3>
+      <table id="taskTable">
+        <tbody id="taskRows">
+        </tbody>
+      </table>
+    </section>
+    </main>
 </body>
 </html>
