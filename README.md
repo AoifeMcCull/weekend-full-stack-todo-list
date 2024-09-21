@@ -3,20 +3,17 @@ Node.js to-do list w/ PostgreSQL
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+A to-do list app using node.js, postgreSQL, axios, and express
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
 /*
 
-TODO: complete button applies completed CSS class
-TODO: completed CSS class clearly shows to-do as complete
 TODO: CSS stylings
 
-DB schema: table todos (task, submitted, is_complete)
+DB schema: table todos (id, text, is_complete)
 id SERIAL NOT NULL
-task: varchar
-submitted: Date
+text: varchar
 is_compete: Boolean
 
 Node schema: todo object{
