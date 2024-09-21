@@ -31,14 +31,21 @@ function renderTasks(taskArray){
     taskTable.innerHTML = '';
     for (let task of taskArray){
         console.log('rendering task:', task)
+        let comepleteString = checkComplete(task)
         let tasksDate = task.date
         taskTable.innerHTML += `
         <tr>
             <td>${task.task}</td>
             <td>${tasksDate.toISOString()}</td>
             <td>${task.isComplete}</td>
+            <td>${comepleteString}</td>
         </tr>`
     }
+}
+
+function checkComplete(task){
+    if(task.isComplete) return '<button onclick=completeTask(event)>Complete</button>'
+    else return 
 }
 
 getTasks()
