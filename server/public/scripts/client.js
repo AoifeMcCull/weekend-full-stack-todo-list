@@ -47,18 +47,13 @@ function addTodo(todoToAdd) {
 function renderTasks(taskArray){
     console.log(taskArray)
     let taskTable = document.getElementById("taskRows");
-    taskTable.innerHTML = '' //TODO: replace with`
-    //<thead>
-      //  <th>task</th>
-       // <th>completed</th>
-    //</thead>`;
+    taskTable.innerHTML = ``;
     for (let task of taskArray){
         let row = buildRow(task)
         let comepleteString = checkComplete(task) //empty if task is complete, otherwise button that onclicks completeTask
         taskTable.innerHTML += `
         ${row}
             <td>${task.text}</td>
-            <td>${task.isComplete}</td>
             <td>${comepleteString}</td>
             <td><button data-testid = "deleteButton" onClick = deleteTask(${task.id})>Delete</button></td>
         </tr>`
@@ -78,7 +73,7 @@ function buildRow(task){ //adds a TR with either completed class or no class
 //if the task isn't complete, make a button to complete it
 function checkComplete(task){
     if(!task.isComplete) return `<button onclick=finishTask(${task.id}) data-testid = "completeButton">Complete</button>`
-    else return ''
+    else return '<p>☑</p>'
 }
 
 function deleteTask(taskId) {
