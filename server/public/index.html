@@ -16,8 +16,8 @@
     <section id="addTodo">
       <h2>Add Todo:</h2>
       <form>
-        <input type="text" id="taskIn" value="" placeholder="task">
-        <button type="button" id="submitButton" onClick = "submitTodo(event)">Submit</button>
+        <input type="text" id="taskIn" data-testid = "toDoTextInput" value="" placeholder="task">
+        <button type="button" id="submitButton" data-testid = "submitButton" onClick = "submitTodo(event)">Submit</button>
       </form>
     </section>
     <section id="taskList" class = "taskList">
