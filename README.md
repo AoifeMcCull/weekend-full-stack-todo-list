@@ -1,5 +1,4 @@
-# Project Name
-Node.js to-do list w/ PostgreSQL
+PostgreSQL to-do list app built on a strict time limit, as a challenge.
 
 ## Description
 
